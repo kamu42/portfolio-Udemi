@@ -1,9 +1,13 @@
-import React, {useState} from 'react'
-import * as S from "./Navbar.styles"
+import React, {useState} from 'react';
+import * as S from "./Navbar.styles";
 
 const Navbar = () => {
 
     const [showMenuBurguer, setShowMenuBurguer] = useState(false);
+
+    const clickItemNav = item =>{
+        document.getElementById(item).scrollIntoView({behavior: "smooth"});
+    };
 
   return (
     <S.ContainerNavbar>
@@ -22,9 +26,9 @@ const Navbar = () => {
         </S.ContainerBurguer>
 
         <S.ContainerItems showMenuBurguer={showMenuBurguer}>
-            <p>Aout Me  </p>
-            <p>  Projects</p>
-            <S.Button>Contact me</S.Button>
+            <p onClick={()=>clickItemNav("about-me")}>About Me  </p>
+            <p onClick={()=>clickItemNav("projects")}>  Projects</p>
+            <S.Button onClick={()=>clickItemNav("contact-me")}>Contact me</S.Button>
         </S.ContainerItems>
     </S.ContainerNavbar>
   )
